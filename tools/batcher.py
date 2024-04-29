@@ -9,7 +9,7 @@ def batch_trainset(trainset, batch_size = 32):
     return trainloader
 
 
-def batch_trainset(testset, batch_size = 32):
+def batch_testset(testset, batch_size = 32):
     testloader = DataLoader(
         testset,
         batch_size=batch_size,

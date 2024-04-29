@@ -43,7 +43,7 @@ def train_step(encoder: torch.nn.Module,
     return losses
 
 
-def train_AE(trainloader, model: nn.Sequential, betta = 0.00001, epochs = 10, rand_seed = 42):
+def train_AE(trainloader, model: nn.Sequential, betta = 0.00001, epochs = 10, rand_seed = 42, device = "cpu"):
     optimizer = optim.Adam(model.parameters(),
                            lr=0.003,
                            weight_decay=betta)
@@ -59,7 +59,8 @@ def train_AE(trainloader, model: nn.Sequential, betta = 0.00001, epochs = 10, ra
             encoder=model[0],
             decoder=model[1],
             loss_fn=loss_fn,
-            optimizer=optimizer
+            optimizer=optimizer,
+            device = device
         )
     train_time_end = timer()
     print(f"Train time: {train_time_end - train_time_start}")

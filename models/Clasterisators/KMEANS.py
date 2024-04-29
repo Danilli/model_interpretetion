@@ -30,4 +30,4 @@ def kmeans_teach(train_data, kmeans):
 def kmeans_batching(trainloader, device, kmeans_minibactch, model):
   for batch, (X, y) in tqdm(enumerate(trainloader)):
     model_data = model(X.to(device))
-    kmeans_minibactch = kmeans_minibactch.partial_fit(enc_data[0:32,:].cpu().detach().numpy())
+    kmeans_minibactch = kmeans_minibactch.partial_fit(model_data[0:32,:].cpu().detach().numpy())
