@@ -1,5 +1,6 @@
 from sklearn.cluster import MiniBatchKMeans, KMeans
-import tools.timers
+import tools.timers as tm
+from tqdm.auto import tqdm
 
 def kmeans_init(n_clusters, batch_size = 0, random_state = 42, n_init = 5):
 
@@ -20,12 +21,12 @@ def kmeans_init(n_clusters, batch_size = 0, random_state = 42, n_init = 5):
     )
     return kmeans
 
-@timers.timer_decorator
+@tm.timer_decorator
 def kmeans_teach(train_data, kmeans):
     kmeans.fit(train_data)
     return kmeans
 
-@timer_decorator
+@tm.timer_decorator
 def kmeans_batching(trainloader, device, kmeans_minibactch, model):
   for batch, (X, y) in tqdm(enumerate(trainloader)):
     model_data = model(X.to(device))

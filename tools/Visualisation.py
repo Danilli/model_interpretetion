@@ -1,4 +1,7 @@
-def plot(data: numpy, xlabel, ylabel, st=0, ed=-1):
+import matplotlib.pyplot as plt
+import numpy as np
+
+def plot(data: np, xlabel, ylabel, st=0, ed=-1):
     fig, ax = plt.subplots(1,1,figsize=(15,7))
     # Plotting the values
     ax.plot(data[st:ed])
@@ -6,7 +9,7 @@ def plot(data: numpy, xlabel, ylabel, st=0, ed=-1):
     plt.ylabel(ylabel)
     plt.show()
 
-def plot_batch(train_features_batch, train_labels_batch, num_in_batch = 0):
+def plot_batch(train_features_batch, train_labels_batch, class_names, num_in_batch = 0):
     img, label = train_features_batch[num_in_batch], train_labels_batch[num_in_batch]
     plt.imshow(img.squeeze(), cmap="gray")
     plt.title(class_names[label])
@@ -16,7 +19,7 @@ def plot_batch(train_features_batch, train_labels_batch, num_in_batch = 0):
     print(f"Label: {label}, label size: {label.shape}")
     print(f"Index: {0}")
 
-def mnist_chi(train_features_batch,class_names, nrows = 5, ncols = 5):
+def mnist_chi(train_features_batch,class_names, train_labels_batch, kmeans_minibactch, nrows = 5, ncols = 5):
     plt.figure(figsize=(15, 15))
     for idx in range(25):
         plt.subplot(nrows, ncols, idx+1)

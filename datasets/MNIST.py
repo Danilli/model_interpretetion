@@ -1,4 +1,5 @@
 from torchvision.datasets import MNIST, CIFAR10
+from torchvision import transforms
 
 def get_trainset():
     trainset = MNIST(

@@ -1,3 +1,5 @@
+from torch.utils.data import DataLoader
+
 def batch_trainset(trainset, batch_size = 32):
     trainloader = DataLoader(
         trainset,

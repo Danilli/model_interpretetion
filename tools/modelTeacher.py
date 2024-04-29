@@ -1,9 +1,15 @@
+import torch
+import torch.nn as nn
+from torch import optim
+from timeit import default_timer as timer
+from tqdm.auto import tqdm
 
 def train_step(encoder: torch.nn.Module,
                decoder: torch.nn.Module,
                data_loader: torch.utils.data.DataLoader,
                loss_fn: torch.nn.Module,
-               optimizer: torch.optim.Optimizer):
+               optimizer: torch.optim.Optimizer,
+               device: torch.device):
     losses = []
     train_loss = 0
     encoder.to(device)
