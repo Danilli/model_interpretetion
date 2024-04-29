@@ -1,5 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
+from sklearn.tree import plot_tree
+
 
 def plot(data: np, xlabel, ylabel, st=0, ed=-1):
     fig, ax = plt.subplots(1,1,figsize=(15,7))
@@ -39,3 +41,9 @@ def mnist_chi(train_features_batch,class_names, train_labels_batch, kmeans_minib
         a=plt.gca()
         a.title.set_size(7)
         plt.axis("Off")
+
+
+def plot_decision_tree(clf_object, feature_names, class_names):
+    plt.figure(figsize=(15, 10))
+    plot_tree(clf_object, filled=True, feature_names=feature_names, class_names=class_names, rounded=True)
+    plt.show()
